@@ -25,14 +25,31 @@ public class world {
 	}
 	
 	private void generateNewWorld() {
+		//SET SPAWN
+		Vector2D spawnPos = getRandomPos();
+		setSlot(new spawn(), spawnPos);
+		
+
+		//SET EXIT
+		Vector2D possibleExitPos = getRandomPos();
+		while(Vector2D.distance(spawnPos, possibleExitPos) < this.config.distanceBetweenSpawnExit) {
+			possibleExitPos = getRandomPos();
+		}
+		System.out.println(Vector2D.distance(spawnPos, possibleExitPos));
+		setSlot(new exit(), possibleExitPos);
+		
+		
 		for(int y = 0; y < this.ySize; y++) {	
 			for(int x = 0; x < this.xSize; x++) {
-				this.slots[x][y] = getRandomSlot();
-				this.slots[x][y].setPos(x, y);
+				if(this.slots[x][y] == null) {
+					this.setSlot(getRandomSlot(), new Vector2D(x, y));
+				}
 			}
 		}
 	}
-	
+	private Vector2D getRandomPos() {
+		return new Vector2D((int)(Math.random() * this.xSize), (int)(Math.random() * this.ySize));
+	}
 	private slot getRandomSlot() {
 		return weightRandomAlgorithm.chooseSlot(this.config.availableSlots);
 	}
@@ -58,5 +75,9 @@ public class world {
 			System.out.println("");
 		}
 		
+	}
+	private void setSlot(slot slot, Vector2D position) {
+		this.slots[position.getX()][position.getY()] = slot;
+		slot.setPos(position);
 	}
 }
