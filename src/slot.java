@@ -13,6 +13,9 @@ public class slot implements Cloneable{
 	public void setPos(int xPos, int yPos) {
 		this.position = new Vector2D(xPos, yPos);
 	}
+	public void setPos(Vector2D position) {
+		this.position = position;
+	}
 	
 	//CLONABLE
 	@Override
