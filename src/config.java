@@ -5,8 +5,11 @@ import java.util.AbstractMap.SimpleEntry;
 
 public class config {
 	//WORLD CONFIG
-	public static final int XSIZE = 5;
-	public static final int YSIZE = 5;
+	public final int XSIZE = 10;
+	public final int YSIZE = 30;
+	
+	public final int MINPATHDISTANCE = 10;
+	public final int MAXPATHDISTANCE = 10;
 	
 	public static final double distanceBetweenSpawnExit = 3;
 	

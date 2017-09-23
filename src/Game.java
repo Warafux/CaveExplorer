@@ -9,7 +9,7 @@ public class Game {
 	}
 	
 	private void startGame(world world, player player) {
-		
+
 	}
 
 }

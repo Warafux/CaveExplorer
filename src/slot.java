@@ -17,6 +17,10 @@ public class slot implements Cloneable{
 		this.position = position;
 	}
 	
+	public void step(player player) {
+		
+	}
+	
 	//CLONABLE
 	@Override
 	protected Object clone() throws CloneNotSupportedException {

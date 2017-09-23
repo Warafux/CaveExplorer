@@ -29,6 +29,15 @@ public class world {
 		Vector2D spawnPos = getRandomPos();
 		setSlot(new spawn(), spawnPos);
 		
+		//CREATE PATH
+		Vector2D lastDirection = new Vector2D(0, 1);//-1,0left / 1,0 right / 0,1 up / 0,-1 down
+		for(int i = 0; i < (this.config.MINPATHDISTANCE +(int)(Math.random() * this.config.MAXPATHDISTANCE)); i++) {
+			Vector2D nextDirection = new Vector2D((int)Math.round(Math.random()), (int)Math.round(Math.random()));
+			while(nextDirection == lastDirection) {
+				nextDirection = (int)(Math.random() * 4) + 1;
+			}
+			
+		}
 
 		//SET EXIT
 		Vector2D possibleExitPos = getRandomPos();
