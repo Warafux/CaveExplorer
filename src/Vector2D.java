@@ -17,7 +17,15 @@ public class Vector2D {
 	public int getY(){
 		return this.y;
 	}
-	
+	public Vector2D add(Vector2D v2){
+		return new Vector2D(this.x + v2.getX(), this.y + v2.getY());
+	}
+	public String vectorInText(){
+		return "(" + this.getX() + ", " + this.getY() + ")";
+	}
+	public boolean equals(Vector2D v2){
+		return (this.x == v2.getX() && this.y == v2.getY());
+	}
 	public static double distance(Vector2D v1, Vector2D v2) {
 		return Math.sqrt(
 			(
