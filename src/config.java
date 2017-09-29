@@ -9,25 +9,22 @@ public class config {
 	public final int YSIZE = 30;
 	
 	public final int MAXFAILATTEMPTS = 100;
-	public final int MINPATHDISTANCE = 89;
-	public final int MAXPATHDISTANCE = 90;
+	public final int MINPATHDISTANCE = 80;
+	public final int MAXPATHDISTANCE = 100;
 	
 	public static final double distanceBetweenSpawnExit = 3;
 	
 	List<SimpleEntry<slot, Integer>> availableSlots = new ArrayList<SimpleEntry<slot, Integer>>(
 		Arrays.asList(
-				new SimpleEntry<slot, Integer>(new wall(), 8),
-				new SimpleEntry<slot, Integer>(new floor(), 0)
+				new SimpleEntry<slot, Integer>(new wall(), 1),
+				new SimpleEntry<slot, Integer>(new floor(), 1)
 				)
 		);
 	
 	//PLAYER CONFIG
-	public String playerName;
 	public config() {
 		//WORLD CONFIG
-		
-		//PLAYER CONFIG
-		this.playerName = "undefined";
+
 	}
 	
 }

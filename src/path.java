@@ -1,7 +1,7 @@
 
 public class path extends slot{
 	public path() {
-		this.icon = '.';
+		this.icon = ' ';
 	}
 
 	public int hola = 2;

@@ -22,8 +22,17 @@ public class slot implements Cloneable{
 	}
 	
 	//CLONABLE
-	@Override
-	protected Object clone() throws CloneNotSupportedException {
-	    return this.clone();
-	}
+
+    @Override
+    public slot clone() {
+        slot clone;
+        try {
+            clone = (slot) super.clone();
+        }
+        catch (CloneNotSupportedException ex) {
+            throw new RuntimeException("Error cloning slot", ex);
+        }
+
+        return clone;
+    }
 }
