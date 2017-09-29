@@ -1,5 +1,5 @@
 
-public class path extends slot{
+public class path extends floor{
 	public path() {
 		this.icon = ' ';
 	}
