@@ -17,7 +17,7 @@ public class Game {
 		System.out.println("your pos: "+player.getPos().vectorInText());
 		
 		//check every move if player's pos equals to an exit slot
-		while(!world.getSlotInWorld(player.getPos()).getPos().equals(world.exitPos)) {
+		while(!world.getSlotInWorld(player.getPos()).getPos().equals(world.exitPos) && !player.isDead()) {
 			//Move the player, check if movement can be done
 			movePlayer(world, player, chooseDirection());
 			
