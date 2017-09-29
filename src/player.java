@@ -1,12 +1,15 @@
 
 public class player {
 	public String playerName = "";
+	private int playerHealth;
+	private boolean isDead = false;
 	
 	private Vector2D lastPos;
 	public Vector2D playerPos;
 	
 	public player(config config) {
 		this.choosePlayerName();
+		this.playerHealth = config.PLAYERHEALTH;
 	}
 	public void choosePlayerName() {
 		System.out.println("Choose your player name:");
@@ -14,7 +17,7 @@ public class player {
 		System.out.println("Your new player name is: " + this.playerName);
 	}
 	public Vector2D getPos() {
-		return playerPos;
+		return this.playerPos;
 	}
 	public void setPos(Vector2D newPos){
 		if(this.playerPos != null){this.lastPos = this.playerPos;}
@@ -28,5 +31,22 @@ public class player {
 		if(this.playerPos != null){
 			this.playerPos = this.lastPos;
 		}
+	}
+	public void die() {
+		this.playerHealth = 0;
+		this.isDead = true;
+		System.out.println("YOU DIED");
+	}
+	public boolean isDead() {
+		return this.isDead;
+	}
+	public void receiveDamage(int damageAmount) {
+		if(damageAmount >= this.playerHealth) {
+			this.die();
+			return;
+		}
+		
+		this.playerHealth -= damageAmount;
+		System.out.println("YOU RECEIVED " + damageAmount + " of DAMAGE");
 	}
 }
