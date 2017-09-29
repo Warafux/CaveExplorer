@@ -4,7 +4,8 @@ public class world {
 	slot[][] slots;
 	int xSize;
 	int ySize;
-	
+	Vector2D spawnPos;
+	Vector2D exitPos;
 	public world(config config) {
 		this.config = config;
 		this.xSize = config.XSIZE;
@@ -32,7 +33,8 @@ public class world {
 	private boolean generateNewWorld() {
 		clearWorld();//clear world
 		//SET SPAWN
-		Vector2D spawnPos = getRandomPos();
+		spawnPos = getRandomPos();
+		
 		setSlot(new spawn(), spawnPos);
 		Vector2D lastPos = spawnPos;
 		
@@ -92,11 +94,9 @@ public class world {
 			possibleExitPos = lastPos.add(nextDirection);
 			//System.out.println("NEW POS " + nextPos.vectorInText());
 		}
-		//System.out.println("SUCCESS!!!!!! PLACING");
-		lastPos = lastPos.add(nextDirection);
-		lastDirection = nextDirection;
-		//Save last pos and direction
-		
+
+		exitPos = lastPos.add(nextDirection);
+
 		//Set the slot
 		setSlot(new path(), lastPos);
 		//System.out.println("PLACED");
@@ -121,7 +121,7 @@ public class world {
 	private void clearWorld(){
 		slots = new slot[this.xSize][this.ySize];
 	}
-	private boolean isValidPos(Vector2D pos){
+	public boolean isValidPos(Vector2D pos){
 		return (pos.getX() < this.xSize && pos.getX() >= 0) && (pos.getY() < this.ySize && pos.getY() >= 0);
 	}
 	private boolean isPosNull(Vector2D pos){
@@ -164,12 +164,26 @@ public class world {
 		}
 		return true;
 	}
-	private void drawMap(){
+	public void drawMap(){
 		if(!isMapGenerated()){return;}
-		
-		for(int x = 0; x < this.xSize; x++) {	
 			for(int y = 0; y < this.ySize; y++) {
-				System.out.print(this.slots[x][y].icon);
+				for(int x = 0; x < this.xSize; x++) {	
+					System.out.print(this.slots[x][y].getIcon());	
+			}
+			System.out.println("");
+		}
+	}
+	public void drawMap(player player){
+		if(!isMapGenerated()){return;}
+		Vector2D playerPos = player.getPos();
+			for(int y = 0; y < this.ySize; y++) {
+				for(int x = 0; x < this.xSize; x++) {	
+				if(!playerPos.equals(new Vector2D(x, y))){
+					System.out.print(this.slots[x][y].getIcon());
+				}else{
+					System.out.print("P");
+				}
+				
 			}
 			System.out.println("");
 		}
@@ -177,16 +191,7 @@ public class world {
 	}
 	private void drawMapAround(player player, int radius){
 		if(!isMapGenerated()){return;}
-		Vector2D playerPos = player.getPos();
-		Vector2D v1 = new Vector2D(playerPos.getX() - (int)Math.floor(radius / 2), playerPos.getY() - (int)Math.floor(radius / 2));
-		Vector2D v9 = new Vector2D(playerPos.getX() - (int)Math.floor(radius / 2), playerPos.getY() - (int)Math.floor(radius / 2));
-		for(int x = v1.getX(); x < playerPos.getX() + v1.getX(); x++) {	
-			for(int y = 0; y < this.ySize; y++) {
-				System.out.print(this.slots[x][y].icon);
-			}
-			System.out.println("");
-		}
-		
+
 	}
 	private void setSlot(slot slot, Vector2D position) {
 		this.slots[position.getX()][position.getY()] = slot;
