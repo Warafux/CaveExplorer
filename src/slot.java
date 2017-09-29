@@ -9,7 +9,12 @@ public class slot implements Cloneable{
 		this.position = new Vector2D(xPos, yPos);
 		System.out.println("SLOT GENERATED ("+xPos+"x"+yPos+")");
 	}
-	
+	public Vector2D getPos(){
+		return this.position;
+	}
+	public char getIcon(){
+		return this.icon;
+	}
 	public void setPos(int xPos, int yPos) {
 		this.position = new Vector2D(xPos, yPos);
 	}
