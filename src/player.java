@@ -3,7 +3,7 @@ public class player {
 	public String playerName = "";
 	private int playerHealth;
 	private boolean isDead = false;
-	
+	char icon = 'p';
 	private Vector2D lastPos;
 	public Vector2D playerPos;
 	
@@ -31,6 +31,9 @@ public class player {
 		if(this.playerPos != null){
 			this.playerPos = this.lastPos;
 		}
+	}
+	public char getIcon(){
+		return this.icon;
 	}
 	public void die() {
 		this.playerHealth = 0;
