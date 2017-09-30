@@ -116,8 +116,21 @@ public class world {
 			}
 		}
 		
-		System.out.println(path);
+		spreadItems();
 		return true;
+	}
+	private void spreadItems(){
+		//Sets random items to each floor slot
+		if(!isMapGenerated()){return;}
+		for(int y = 0; y < this.ySize; y++) {
+			for(int x = 0; x < this.xSize; x++) {
+				//Is floor?
+				if(this.slots[x][y] instanceof floor){
+					floor floorSlot = (floor)this.slots[x][y];
+					floorSlot.setItemHeld(this.getRandomItem());
+				}
+			}
+		}
 	}
 	private void clearWorld(){
 		slots = new slot[this.xSize][this.ySize];
@@ -150,6 +163,9 @@ public class world {
 	}
 	private Vector2D getRandomPos() {
 		return new Vector2D((int)(Math.random() * this.xSize), (int)(Math.random() * this.ySize));
+	}
+	private item getRandomItem() {
+		return weightRandomAlgorithm.chooseItem(this.config.availableItems);
 	}
 	private slot getRandomSlot() {
 		return weightRandomAlgorithm.chooseSlot(this.config.availableSlots);

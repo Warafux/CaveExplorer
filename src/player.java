@@ -4,9 +4,11 @@ public class player {
 	private int playerHealth;
 	private boolean isDead = false;
 	char icon = 'p';
+	
 	private Vector2D lastPos;
 	public Vector2D playerPos;
 	
+	private inventory inventory = new inventory();
 	public player(config config) {
 		this.choosePlayerName();
 		this.playerHealth = config.PLAYERHEALTH;
@@ -51,5 +53,9 @@ public class player {
 		
 		this.playerHealth -= damageAmount;
 		System.out.println("YOU RECEIVED " + damageAmount + " of DAMAGE");
+	}
+	public void addInventory(item item) {
+		this.inventory.addItem(item);
+		System.out.println(item.getClass() + " has been added to your inventory.");
 	}
 }

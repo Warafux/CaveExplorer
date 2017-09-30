@@ -38,4 +38,22 @@ public class weightRandomAlgorithm {
 		//Return last item (less weighted)
 		return list.get(list.size() - 1).getKey();
 	}
+	public static item chooseItem(List<SimpleEntry<item, Integer>> list){
+		int totalWeight = 0;
+		
+		for(SimpleEntry<item, Integer> row : list){
+			totalWeight += row.getValue();
+		}
+		
+		int randomNumber = (int)(totalWeight * Math.random()) + 1;
+		for(SimpleEntry<item, Integer> row : list){
+			randomNumber -= row.getValue();
+			if(randomNumber <= 0){
+				return row.getKey();
+			}
+		}
+		
+		//Return last item (less weighted)
+		return list.get(list.size() - 1).getKey();
+	}
 }

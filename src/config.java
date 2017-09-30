@@ -25,6 +25,14 @@ public class config {
 				)
 		);
 	
+	//Available items for the floor(itemHeld)
+		List<SimpleEntry<item, Integer>> availableItems = new ArrayList<SimpleEntry<item, Integer>>(
+			Arrays.asList(
+					new SimpleEntry<item, Integer>(new pickaxe(), 1),
+					new SimpleEntry<item, Integer>(null, 39)
+					)
+			);
+		
 	//PLAYER CONFIG
 	public config() {
 		//WORLD CONFIG
