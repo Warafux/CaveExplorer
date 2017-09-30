@@ -25,7 +25,7 @@ public class Game {
 			world.getSlotInWorld(player.getPos()).step(player);
 			
 			//Draw again the map
-			world.drawMap(player);
+			world.drawMapAround(player, 3);
 		}
 		System.out.println("EXIT OK!!!");
 	}

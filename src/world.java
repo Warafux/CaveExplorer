@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class world {
 	config config;
@@ -189,9 +190,40 @@ public class world {
 		}
 		
 	}
-	private void drawMapAround(player player, int radius){
+	public void drawMapAround(player player, int radius){
 		if(!isMapGenerated()){return;}
-
+		Vector2D playerPos = player.getPos();
+		
+		for(int i = 0; i < radius; i++){
+			System.out.print("_");
+		}
+		System.out.println("");
+		for(int y = 0; y < this.ySize; y++) {
+			//If the row is empty, track it, to avoid println
+			boolean emptyRow = true;
+			for(int x = 0; x < this.xSize; x++) {
+				
+				Vector2D actualPos = new Vector2D(x, y);//Actual loop pos
+				
+				//Check distance between playerPos and actualPos
+				if(Vector2D.distance(playerPos, actualPos) < radius){
+					//Is the actualPos where the player is located?
+					if(!playerPos.equals(actualPos)){
+						System.out.print(this.slots[x][y].getIcon());//Print slot icon
+					}else{
+						System.out.print(player.getIcon());//Print player icon
+					}
+					emptyRow = false;
+				}
+			}
+			if(!emptyRow){
+				System.out.println("");//If the last row was NOT empty, print a \n
+			}
+		}
+		for(int i = 0; i < radius; i++){
+			System.out.print("_");
+		}
+		
 	}
 	private void setSlot(slot slot, Vector2D position) {
 		this.slots[position.getX()][position.getY()] = slot;
