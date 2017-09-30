@@ -2,13 +2,14 @@
 public class Game {
 	
 	public static void main(String[] args) {
+		stats stats = new stats();
 		config config = new config();
 		world world = new world(config);
 		player player = new player(config);
-		startGame(world, player);
+		startGame(world, player, stats);
 	}
 	
-	private static void startGame(world world, player player) {
+	private static void startGame(world world, player player, stats stats) {
 		System.out.println("GAME STARTED");
 		
 		//Put player on START position
@@ -19,7 +20,7 @@ public class Game {
 		//check every move if player's pos equals to an exit slot
 		while(!world.getSlotInWorld(player.getPos()).getPos().equals(world.exitPos) && !player.isDead()) {
 			//Move the player, check if movement can be done
-			movePlayer(world, player, chooseDirection());
+			movePlayer(world, player, chooseDirection(), stats);
 			
 			//Calls for the slot step's function that the player is stepping
 			world.getSlotInWorld(player.getPos()).step(player);
@@ -56,11 +57,12 @@ public class Game {
 		}
 		return chosenDirection;
 	}
-	private static void movePlayer(world world, player player, Vector2D direction){
+	private static void movePlayer(world world, player player, Vector2D direction, stats stats){
 		Vector2D playerNewPos = player.getPos().add(direction);
 		//Is the new pos valid?
 		if(world.isValidPos(playerNewPos)){
 			player.move(direction);
+			stats.addStep();
 		}else{
 			System.out.println("You're trying to move out of bounds (HARDWALL)");
 		}
