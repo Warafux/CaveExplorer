@@ -5,7 +5,7 @@ public class spawn extends slot{
 	}
 	
 	@Override
-	public void step(player player) {
+	public void step(world world, player player){
 		
 	}
 }
