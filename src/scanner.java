@@ -8,7 +8,7 @@ public class scanner {
 		res = scanner.nextLine();
 		return res;
 	}
-	public static char requestWASDChar(){
+	public static char requestControllerChar(){
 		String resLine = "";
 		char res;
 		while(resLine.equals("")){
@@ -24,10 +24,16 @@ public class scanner {
 		case 'S':
 		case 'd':
 		case 'D':
+		case 'i':
+		case 'I':
+		case 'h':
+		case 'H':
+		case 'b':
+		case 'B':
 			return res;
 		default:
 			System.out.println("ERROR INVALID CHAR");
-			return requestWASDChar();
+			return requestControllerChar();
 		}
 		
 	}

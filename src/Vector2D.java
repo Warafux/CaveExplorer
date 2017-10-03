@@ -2,10 +2,6 @@
 public class Vector2D {
 	private int x = 0;
 	private int y = 0;
-	public static void main(String[] args) {
-		//TEST DISTANCE FUNCTION
-		//System.out.println(distance(new Vector2D(10,2), new Vector2D(99, -25)));
-	}
 	public Vector2D(int x, int y) {
 		this.x = x;
 		this.y = y;
@@ -34,5 +30,8 @@ public class Vector2D {
 			Math.pow(v1.getY() - v2.getY(), 2)
 			)
 		);
+	}
+	public static double angle(Vector2D v1, Vector2D v2){
+		return (float) Math.toDegrees(Math.atan2(v1.getY() - v2.getY(), v1.getX() - v2.getX()));
 	}
 }
