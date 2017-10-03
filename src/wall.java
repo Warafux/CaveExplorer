@@ -20,7 +20,7 @@ public class wall extends slot{
 			pickaxe pickaxe = (pickaxe) player.getItemFormInventory("pickaxe");
 			pickaxe.use(world, player);
 		}else{
-			System.out.println("This is a wall, go back...");
+			System.out.println("You can't go through this wall.");
 			player.goBack();
 		}
 		
@@ -28,7 +28,7 @@ public class wall extends slot{
 	
 	public void breakWall(){
 		if(!this.broken){
-			System.out.println("Breaking the wall!!");
+			System.out.println("Breaking the wall!");
 			this.broken = true;
 		}else{
 			

@@ -8,7 +8,10 @@ public class bandages extends item{
 		this.usesLeft = 2;
 	}
 	public void use(world world, player player){
-		if(player.getHealth() == 100){return;}
+		if(player.getHealth() == 100){
+			System.out.println("You're already full HP.");
+			return;
+			}
 		player.heal(this.healAmount);
 		
 		this.usesLeft--;

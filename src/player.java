@@ -70,7 +70,7 @@ public class player {
 		}
 		
 		this.playerHealth -= damageAmount;
-		System.out.println("YOU RECEIVED " + damageAmount + " of DAMAGE");
+		System.out.println("You've received " + damageAmount + " of DAMAGE. (" + this.playerHealth + "hp)");
 	}
 	public void useInventoryItem(world world, player player, String itemName){
 		for(item invItem : this.inventory.items){

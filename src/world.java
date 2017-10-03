@@ -14,16 +14,13 @@ public class world {
 		this.radiusVisibility = config.RADIUSVISIBILITY;
 		
 		slots = new slot[this.xSize][this.ySize];
-		System.out.println("WORLD GENERATED ("+this.xSize+"x"+this.ySize+")");
-		System.out.println("Generating new slot map");
-		
-		//System.out.println(isMapGenerated());  FALSE
+		System.out.println("WORLD GENERATED ("+this.xSize+"x"+this.ySize+") Filling...");
+
 		boolean isWorldGeneratedCorrectly = generateNewWorld();
 		while(!isWorldGeneratedCorrectly){
-			//System.out.println("World map generator failed, trying again...");
+			//Generator failed, try again
 			isWorldGeneratedCorrectly = generateNewWorld();
 		}
-		//System.out.println(isMapGenerated());  TRUE
 
 	}
 
@@ -45,7 +42,6 @@ public class world {
 			Vector2D nextDirection = getRandomDirection();
 			Vector2D nextPos = lastPos.add(nextDirection);
 			
-			//System.out.println("ATTEMPTING TO PLACE IN " + nextPos.vectorInText());
 			while(nextDirection.equals(lastDirection) || !this.isValidPos(nextPos) || !this.isPosNull(nextPos)) {
 				//Check if it's possible to place something in the next position
 				failAttempts++;//if not add a failure
@@ -53,20 +49,16 @@ public class world {
 					return false;
 					//If too many fails, return a false
 				}
-				//System.out.println("FAILED");
 				//Get another direction and re-calculate the next pos
 				nextDirection = getRandomDirection();
 				nextPos = lastPos.add(nextDirection);
-				//System.out.println("NEW POS " + nextPos.vectorInText());
 			}
-			//System.out.println("SUCCESS!!!!!! PLACING");
 			lastPos = nextPos;
 			lastDirection = nextDirection;
 			//Save last pos and direction
 			
 			//Set the slot
 			setSlot(new path(), lastPos);
-			//System.out.println("PLACED");
 			
 			//Path tracker
 			//path += lastPos.vectorInText();
@@ -77,7 +69,6 @@ public class world {
 		Vector2D nextDirection = getRandomDirection();
 		Vector2D possibleExitPos = lastPos.add(nextDirection);
 		
-		//System.out.println("ATTEMPTING TO PLACE IN " + nextPos.vectorInText());
 		while(nextDirection.equals(lastDirection) || !this.isValidPos(possibleExitPos) || !this.isPosNull(possibleExitPos)) {
 			//Check if it's possible to place something in the next position
 			failAttempts++;//if not add a failure
@@ -85,18 +76,15 @@ public class world {
 				return false;
 				//If too many fails, return a false
 			}
-			//System.out.println("FAILED");
 			//Get another direction and re-calculate the next pos
 			nextDirection = getRandomDirection();
 			possibleExitPos = lastPos.add(nextDirection);
-			//System.out.println("NEW POS " + nextPos.vectorInText());
 		}
 
 		exitPos = lastPos.add(nextDirection);
 
 		//Set the slot
 		setSlot(new path(), lastPos);
-		//System.out.println("PLACED");
 		
 		//Path tracker
 		//path += lastPos.vectorInText();
@@ -195,7 +183,7 @@ public class world {
 				if(!playerPos.equals(new Vector2D(x, y))){
 					System.out.print(this.slots[x][y].getIcon());
 				}else{
-					System.out.print("P");
+					System.out.print(player.getIcon());
 				}
 				
 			}
@@ -207,10 +195,10 @@ public class world {
 		if(!isMapGenerated()){return;}
 		Vector2D playerPos = player.getPos();
 		
-		for(int i = 0; i < this.radiusVisibility; i++){
-			System.out.print("_");
+		for(int i = 0; i < 20; i++){
+			System.out.println("");
 		}
-		System.out.println("");
+
 		for(int y = 0; y < this.ySize; y++) {
 			//If the row is empty, track it, to avoid println
 			boolean emptyRow = true;
@@ -232,9 +220,6 @@ public class world {
 			if(!emptyRow){
 				System.out.println("");//If the last row was NOT empty, print a \n
 			}
-		}
-		for(int i = 0; i < this.radiusVisibility; i++){
-			System.out.print("_");
 		}
 		
 	}

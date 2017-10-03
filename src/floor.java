@@ -19,7 +19,6 @@ public class floor extends slot{
 			player.addInventory(itemHeld);
 		}
 		this.itemHeld = null;
-		System.out.println("YEAH");
 	}
 	public void setItemHeld(item item){
 		this.itemHeld = item;

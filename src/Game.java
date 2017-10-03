@@ -6,7 +6,14 @@ public class Game {
 		config config = new config();
 		world world = new world(config);
 		player player = new player(config);
+		System.out.println("");
+		System.out.println("Welcome to CaveExplorer. Find the exit!");
+		System.out.println("W - UP / A - LEFT / S - DOWN / D - RIGHT");
+		System.out.println("H - HELP / I - INVENTORY / B - BANDAGES");
+		System.out.println("");
+		
 		startGame(world, player, stats);
+
 	}
 	
 	private static void startGame(world world, player player, stats stats) {
@@ -29,12 +36,10 @@ public class Game {
 			world.drawMapAround(player);
 			//world.drawMap(player);
 		}
-		System.out.println("EXIT OK!!!");
+		System.out.println("GAME ENDED");
 	}
 	private static Vector2D chooseNextAction(world world, player player){
 		Vector2D chosenDirection;
-		//System.out.println("Choose a direction:");
-		//System.out.println("W UP / A LEFT / S DOWN / D RIGHT");
 		switch(scanner.requestControllerChar()){
 			case 'w':
 			case 'W':
