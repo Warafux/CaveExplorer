@@ -35,4 +35,7 @@ public class Vector2D {
 			)
 		);
 	}
+	public static double angle(Vector2D v1, Vector2D v2){
+		return (float) Math.toDegrees(Math.atan2(v1.getY() - v2.getY(), v1.getX() - v2.getX()));
+	}
 }

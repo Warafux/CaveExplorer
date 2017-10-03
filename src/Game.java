@@ -26,8 +26,8 @@ public class Game {
 			world.getSlotInWorld(player.getPos()).step(world, player);
 			
 			//Draw again the map
-			//world.drawMapAround(player, 3);
-			world.drawMap(player);
+			world.drawMapAround(player, 3);
+			//world.drawMap(player);
 		}
 		System.out.println("EXIT OK!!!");
 	}
@@ -57,6 +57,11 @@ public class Game {
 				player.printInventory();
 				chosenDirection = chooseNextAction(world, player);
 				break;
+			case 'h':
+			case 'H':
+				displayHelp(world, player);
+				chosenDirection = chooseNextAction(world, player);
+				break;
 			default:
 				chosenDirection = new Vector2D(0, 0);
 				break;
@@ -72,5 +77,26 @@ public class Game {
 		}else{
 			System.out.println("You're trying to move out of bounds (HARDWALL)");
 		}
+	}
+	private static void displayHelp(world world, player player){
+		double angleBetwenPlayerAndExit = Vector2D.angle(player.getPos(), world.exitPos);
+		double distanceBetweenPlayerAndExit = Vector2D.distance(player.getPos(), world.exitPos);
+		System.out.print("From your position, exit is located at: ");
+		if(angleBetwenPlayerAndExit > 0 && angleBetwenPlayerAndExit < 90){
+			System.out.print("top-left");
+		}else if(angleBetwenPlayerAndExit == 90){
+			System.out.print("top");
+		}else if(angleBetwenPlayerAndExit > 90 && angleBetwenPlayerAndExit < 180){
+			System.out.print("top-right");
+		}else if(angleBetwenPlayerAndExit == 180){
+			System.out.print("right");
+		}else if(angleBetwenPlayerAndExit > 180 && angleBetwenPlayerAndExit < 270){
+			System.out.print("bottom-right");
+		}else if(angleBetwenPlayerAndExit == 270){
+			System.out.print("bottom");
+		}else if(angleBetwenPlayerAndExit > 270 && angleBetwenPlayerAndExit < 360){
+			System.out.print("bottom-left");
+		}
+		System.out.println(" (" + (int)Math.floor(distanceBetweenPlayerAndExit) + " slots aprox)");
 	}
 }
