@@ -15,7 +15,7 @@ public class Game {
 		//Put player on START position
 		player.setPos(world.spawnPos);
 		
-		world.drawMap(player);
+		world.drawMapAround(player);
 
 		//check every move if player's pos equals to an exit slot
 		while(!world.getSlotInWorld(player.getPos()).getPos().equals(world.exitPos) && !player.isDead()) {
@@ -26,7 +26,7 @@ public class Game {
 			world.getSlotInWorld(player.getPos()).step(world, player);
 			
 			//Draw again the map
-			world.drawMapAround(player, 3);
+			world.drawMapAround(player);
 			//world.drawMap(player);
 		}
 		System.out.println("EXIT OK!!!");
@@ -55,6 +55,11 @@ public class Game {
 			case 'i':
 			case 'I':
 				player.printInventory();
+				chosenDirection = chooseNextAction(world, player);
+				break;
+			case 'b':
+			case 'B':	
+				player.useInventoryItem(world, player, "bandages");
 				chosenDirection = chooseNextAction(world, player);
 				break;
 			case 'h':

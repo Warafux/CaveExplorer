@@ -43,10 +43,22 @@ public class player {
 	public char getIcon(){
 		return this.icon;
 	}
+	public int getHealth(){
+		return this.playerHealth;
+	}
 	public void die() {
 		this.playerHealth = 0;
 		this.isDead = true;
 		System.out.println("YOU DIED");
+	}
+	public void heal(int healAmount){
+		if(healAmount + this.playerHealth >= 100){
+			this.playerHealth = 100;
+			System.out.println("You've been healed up to 100hp");
+		}else{
+			this.playerHealth += healAmount;
+			System.out.println("You've recovered " + healAmount + ". (" + this.playerHealth + "hp)");
+		}
 	}
 	public boolean isDead() {
 		return this.isDead;
@@ -59,6 +71,16 @@ public class player {
 		
 		this.playerHealth -= damageAmount;
 		System.out.println("YOU RECEIVED " + damageAmount + " of DAMAGE");
+	}
+	public void useInventoryItem(world world, player player, String itemName){
+		for(item invItem : this.inventory.items){
+			if(itemName == invItem.getItemName() && invItem.getIsUsable()){
+				invItem.use(world, player);
+				return;
+			}
+		}
+		System.out.println("Item not available.");
+		return;
 	}
 	public void addInventory(item item) {
 		this.inventory.addItem(item);

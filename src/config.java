@@ -11,6 +11,9 @@ public class config {
 	public final int XSIZE = 10;
 	public final int YSIZE = 30;
 	
+	//Drawp map around player visibility
+	public final int RADIUSVISIBILITY = 3;
+	
 	//WORLD GENERATOR CONFIG
 	public final int MAXFAILATTEMPTS = 100;
 	public final int MINPATHDISTANCE = 80;
@@ -29,6 +32,7 @@ public class config {
 		List<SimpleEntry<item, Integer>> availableItems = new ArrayList<SimpleEntry<item, Integer>>(
 			Arrays.asList(
 					new SimpleEntry<item, Integer>(new pickaxe(), 1),
+					new SimpleEntry<item, Integer>(new bandages(), 1),
 					new SimpleEntry<item, Integer>(null, 39)
 					)
 			);

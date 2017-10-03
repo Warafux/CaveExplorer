@@ -3,6 +3,7 @@ public class item implements Cloneable{
 	char icon;
 	String itemName = "";
 	int usesLeft = -1;
+	protected boolean isUsable;
 	public item(){
 		
 	}
@@ -14,6 +15,9 @@ public class item implements Cloneable{
 	}
 	public void use(world world, player player){
 		
+	}
+	public boolean getIsUsable(){
+		return this.isUsable;
 	}
 	
 	//CLONABLE

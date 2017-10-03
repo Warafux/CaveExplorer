@@ -6,11 +6,13 @@ public class world {
 	int ySize;
 	Vector2D spawnPos;
 	Vector2D exitPos;
+	int radiusVisibility;
 	public world(config config) {
 		this.config = config;
 		this.xSize = config.XSIZE;
 		this.ySize = config.YSIZE;
-
+		this.radiusVisibility = config.RADIUSVISIBILITY;
+		
 		slots = new slot[this.xSize][this.ySize];
 		System.out.println("WORLD GENERATED ("+this.xSize+"x"+this.ySize+")");
 		System.out.println("Generating new slot map");
@@ -201,11 +203,11 @@ public class world {
 		}
 		
 	}
-	public void drawMapAround(player player, int radius){
+	public void drawMapAround(player player){
 		if(!isMapGenerated()){return;}
 		Vector2D playerPos = player.getPos();
 		
-		for(int i = 0; i < radius; i++){
+		for(int i = 0; i < this.radiusVisibility; i++){
 			System.out.print("_");
 		}
 		System.out.println("");
@@ -217,7 +219,7 @@ public class world {
 				Vector2D actualPos = new Vector2D(x, y);//Actual loop pos
 				
 				//Check distance between playerPos and actualPos
-				if(Vector2D.distance(playerPos, actualPos) < radius){
+				if(Vector2D.distance(playerPos, actualPos) < this.radiusVisibility){
 					//Is the actualPos where the player is located?
 					if(!playerPos.equals(actualPos)){
 						System.out.print(this.slots[x][y].getIcon());//Print slot icon
@@ -231,7 +233,7 @@ public class world {
 				System.out.println("");//If the last row was NOT empty, print a \n
 			}
 		}
-		for(int i = 0; i < radius; i++){
+		for(int i = 0; i < this.radiusVisibility; i++){
 			System.out.print("_");
 		}
 		
