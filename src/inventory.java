@@ -6,7 +6,8 @@ public class inventory {
 	public void addItem(item item) {
 		this.items.add(item);
 	}
-	public void removeItem(int inventoryIndex){
-		this.items.remove(inventoryIndex);
+	public void removeItem(int index){
+		System.out.println("Item: " + this.items.get(index) + " has been removed");
+		this.items.remove(index);
 	}
 }

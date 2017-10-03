@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 public class world {
 	config config;
@@ -30,7 +29,7 @@ public class world {
 		////////////////////////
 		drawMap();
 	}
-	
+
 	private boolean generateNewWorld() {
 		clearWorld();//clear world
 		//SET SPAWN
@@ -40,7 +39,7 @@ public class world {
 		Vector2D lastPos = spawnPos;
 		
 		//CREATE PATH
-		String path = "";
+		//String path = "";
 		int failAttempts = 0;//If x errors, quit and restart
 		Vector2D lastDirection = getRandomDirection();//-1,0left / 1,0 right / 0,1 up / 0,-1 down
 		
@@ -73,7 +72,7 @@ public class world {
 			//System.out.println("PLACED");
 			
 			//Path tracker
-			path += lastPos.vectorInText();
+			//path += lastPos.vectorInText();
 		}
 
 		//SET EXIT
@@ -103,7 +102,7 @@ public class world {
 		//System.out.println("PLACED");
 		
 		//Path tracker
-		path += lastPos.vectorInText();
+		//path += lastPos.vectorInText();
 		
 		setSlot(new exit(), possibleExitPos);
 		
@@ -111,7 +110,7 @@ public class world {
 		for(int y = 0; y < this.ySize; y++) {	
 			for(int x = 0; x < this.xSize; x++) {
 				if(this.slots[x][y] == null) {
-					this.setSlot(getRandomSlot().clone(), new Vector2D(x, y));
+					this.setSlot(this.getRandomSlot().clone(), new Vector2D(x, y));
 				}
 			}
 		}
@@ -127,7 +126,8 @@ public class world {
 				//Is floor?
 				if(this.slots[x][y] instanceof floor){
 					floor floorSlot = (floor)this.slots[x][y];
-					floorSlot.setItemHeld(this.getRandomItem());
+					item randomItem = this.getRandomItem();
+					floorSlot.setItemHeld(randomItem == null ? null : randomItem.clone());
 				}
 			}
 		}
