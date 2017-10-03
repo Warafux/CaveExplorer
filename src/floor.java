@@ -12,9 +12,8 @@ public class floor extends slot{
 	public char getIcon(){
 		return this.steppedOn ? this.steppedChar : (this.itemHeld == null ? this.icon : this.itemHeld.getIcon());
 	}
-	public int hola = 2;
-	
-	public void step(player player){
+
+	public void step(world world, player player){
 		this.steppedOn = true;
 		if(this.itemHeld != null){
 			player.addInventory(itemHeld);

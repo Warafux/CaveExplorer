@@ -21,12 +21,13 @@ public class Game {
 		while(!world.getSlotInWorld(player.getPos()).getPos().equals(world.exitPos) && !player.isDead()) {
 			//Move the player, check if movement can be done
 			movePlayer(world, player, chooseDirection(), stats);
-			
+
 			//Calls for the slot step's function that the player is stepping
-			world.getSlotInWorld(player.getPos()).step(player);
+			world.getSlotInWorld(player.getPos()).step(world, player);
 			
 			//Draw again the map
-			world.drawMapAround(player, 3);
+			//world.drawMapAround(player, 3);
+			world.drawMap(player);
 		}
 		System.out.println("EXIT OK!!!");
 	}
