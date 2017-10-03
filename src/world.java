@@ -22,12 +22,7 @@ public class world {
 			isWorldGeneratedCorrectly = generateNewWorld();
 		}
 		//System.out.println(isMapGenerated());  TRUE
-		
-		//HAS TO CHECK WHETHER THE MAP HAS A SOLUTION OR NOT
-		////NOT
-		////IMPLEMENTED YET
-		////////////////////////
-		drawMap();
+
 	}
 
 	private boolean generateNewWorld() {

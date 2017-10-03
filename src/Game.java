@@ -15,12 +15,12 @@ public class Game {
 		//Put player on START position
 		player.setPos(world.spawnPos);
 		
-		System.out.println("your pos: "+player.getPos().vectorInText());
-		
+		world.drawMap(player);
+
 		//check every move if player's pos equals to an exit slot
 		while(!world.getSlotInWorld(player.getPos()).getPos().equals(world.exitPos) && !player.isDead()) {
 			//Move the player, check if movement can be done
-			movePlayer(world, player, chooseDirection(), stats);
+			movePlayer(world, player, chooseNextAction(world, player), stats);
 
 			//Calls for the slot step's function that the player is stepping
 			world.getSlotInWorld(player.getPos()).step(world, player);
@@ -31,11 +31,11 @@ public class Game {
 		}
 		System.out.println("EXIT OK!!!");
 	}
-	private static Vector2D chooseDirection(){
+	private static Vector2D chooseNextAction(world world, player player){
 		Vector2D chosenDirection;
 		//System.out.println("Choose a direction:");
 		//System.out.println("W UP / A LEFT / S DOWN / D RIGHT");
-		switch(scanner.requestWASDChar()){
+		switch(scanner.requestControllerChar()){
 			case 'w':
 			case 'W':
 				chosenDirection = new Vector2D(0, -1);
@@ -51,6 +51,11 @@ public class Game {
 			case 'd':
 			case 'D':
 				chosenDirection = new Vector2D(1, 0);
+				break;
+			case 'i':
+			case 'I':
+				player.printInventory();
+				chosenDirection = chooseNextAction(world, player);
 				break;
 			default:
 				chosenDirection = new Vector2D(0, 0);

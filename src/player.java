@@ -90,4 +90,10 @@ public class player {
 			index++;
 		}
 	}
+	public void printInventory(){
+		System.out.println("Printing inventory: " + this.inventory.items.size() + " item" + (this.inventory.items.size() == 1 ? "" : "s"));
+		for(item invItem : this.inventory.items){
+			System.out.println(invItem.getItemName() + " - " + invItem.usesLeft + " use" + (invItem.usesLeft == 1 ? "" : "s") + " left");
+		}
+	}
 }

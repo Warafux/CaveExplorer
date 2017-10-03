@@ -15,6 +15,7 @@ public class pickaxe extends item{
 		
 		this.usesLeft--;
 		if(this.usesLeft == 0){
+			System.out.println("Oh, your pickaxe is broken...");
 			player.deleteItemFromInventory((item) this);
 		}
 	}
