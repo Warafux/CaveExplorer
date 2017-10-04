@@ -1,3 +1,6 @@
+package game;
+import utilities.Vector2D;
+import utilities.scanner;
 
 public class player {
 	public String playerName = "";

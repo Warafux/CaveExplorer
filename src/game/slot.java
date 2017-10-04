@@ -1,7 +1,9 @@
+package game;
+import utilities.Vector2D;
 
 public class slot implements Cloneable{
-	Vector2D position;
-	char icon;
+	public Vector2D position;
+	protected char icon;
 	public slot() {
 			
 	}

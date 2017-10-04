@@ -1,8 +1,8 @@
-
+package game;
 public class item implements Cloneable{
-	char icon;
-	String itemName = "";
-	int usesLeft = -1;
+	protected char icon;
+	protected String itemName = "";
+	protected int usesLeft = -1;
 	protected boolean isUsable;
 	public item(){
 		

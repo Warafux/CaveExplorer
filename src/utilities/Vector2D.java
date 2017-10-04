@@ -1,3 +1,4 @@
+package utilities;
 
 public class Vector2D {
 	private int x = 0;

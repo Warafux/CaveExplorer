@@ -1,3 +1,9 @@
+package items;
+import game.item;
+import game.player;
+import game.world;
+import slots.wall;
+import utilities.Vector2D;
 
 public class pickaxe extends item{
 	

@@ -1,3 +1,8 @@
+package slots;
+import game.item;
+import game.player;
+import game.slot;
+import game.world;
 
 public class floor extends slot{
 	private boolean steppedOn = false;

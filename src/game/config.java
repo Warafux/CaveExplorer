@@ -1,7 +1,14 @@
+package game;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.AbstractMap.SimpleEntry;
+
+import items.bandages;
+import items.pickaxe;
+import slots.bomb;
+import slots.floor;
+import slots.wall;
 
 public class config {
 	//Default player config

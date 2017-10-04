@@ -1,11 +1,18 @@
+package game;
+import slots.exit;
+import slots.floor;
+import slots.path;
+import slots.spawn;
+import utilities.Vector2D;
+import utilities.weightRandomAlgorithm;
 
 public class world {
 	config config;
 	slot[][] slots;
 	int xSize;
 	int ySize;
-	Vector2D spawnPos;
-	Vector2D exitPos;
+	private Vector2D spawnPos;
+	private Vector2D exitPos;
 	int radiusVisibility;
 	public world(config config) {
 		this.config = config;
@@ -27,10 +34,10 @@ public class world {
 	private boolean generateNewWorld() {
 		clearWorld();//clear world
 		//SET SPAWN
-		spawnPos = getRandomPos();
+		setSpawnPos(getRandomPos());
 		
-		setSlot(new spawn(), spawnPos);
-		Vector2D lastPos = spawnPos;
+		setSlot(new spawn(), getSpawnPos());
+		Vector2D lastPos = getSpawnPos();
 		
 		//CREATE PATH
 		//String path = "";
@@ -81,7 +88,7 @@ public class world {
 			possibleExitPos = lastPos.add(nextDirection);
 		}
 
-		exitPos = lastPos.add(nextDirection);
+		setExitPos(lastPos.add(nextDirection));
 
 		//Set the slot
 		setSlot(new path(), lastPos);
@@ -226,5 +233,21 @@ public class world {
 	private void setSlot(slot slot, Vector2D position) {
 		this.slots[position.getX()][position.getY()] = slot;
 		slot.setPos(position);
+	}
+
+	public Vector2D getSpawnPos() {
+		return spawnPos;
+	}
+
+	public void setSpawnPos(Vector2D spawnPos) {
+		this.spawnPos = spawnPos;
+	}
+
+	public Vector2D getExitPos() {
+		return exitPos;
+	}
+
+	public void setExitPos(Vector2D exitPos) {
+		this.exitPos = exitPos;
 	}
 }
