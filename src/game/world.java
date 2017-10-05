@@ -162,6 +162,9 @@ public class world {
 	private slot getRandomSlot() {
 		return weightRandomAlgorithm.chooseSlot(this.config.availableSlots);
 	}
+	public slot[][] getSlots(){
+		return this.slots;
+	}
 	private boolean isMapGenerated(){
 		for(int y = 0; y < this.ySize; y++) {	
 			for(int x = 0; x < this.xSize; x++) {	
