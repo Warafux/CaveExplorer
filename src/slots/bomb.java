@@ -4,7 +4,7 @@ import game.slot;
 import game.world;
 
 public class bomb extends slot{
-	private final int DAMAGE = (int)Math.round(Math.random() * 25 + 25);
+	private final int DAMAGE = (int)Math.round(Math.random() * 25 + 25);//Random for every game (not for individual bomb)
 	
 	private boolean bombDetonated = false;
 	private char bombDetonatedChar = ',';

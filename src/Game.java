@@ -78,6 +78,11 @@ public class Game {
 				displayHelp(world, player);
 				chosenDirection = chooseNextAction(world, player);
 				break;
+			case 'r':
+			case 'R':
+				player.useInventoryItem(world, player, "binoculars");
+				chosenDirection = chooseNextAction(world, player);
+				break;
 			default:
 				chosenDirection = new Vector2D(0, 0);
 				break;

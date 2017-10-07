@@ -31,6 +31,8 @@ public class scanner {
 		case 'H':
 		case 'b':
 		case 'B':
+		case 'r':
+		case 'R':
 			return res;
 		default:
 			System.out.println("ERROR INVALID CHAR");

@@ -13,7 +13,7 @@ public class world {
 	int ySize;
 	private Vector2D spawnPos;
 	private Vector2D exitPos;
-	int radiusVisibility;
+	private int radiusVisibility;
 	public world(config config) {
 		this.config = config;
 		this.xSize = config.XSIZE;
@@ -177,6 +177,7 @@ public class world {
 		return true;
 	}
 	public void drawMap(){
+		//Draw only the map without even a radius
 		if(!isMapGenerated()){return;}
 			for(int y = 0; y < this.ySize; y++) {
 				for(int x = 0; x < this.xSize; x++) {	
@@ -186,6 +187,7 @@ public class world {
 		}
 	}
 	public void drawMap(player player){
+		//Draw map with player on it
 		if(!isMapGenerated()){return;}
 		Vector2D playerPos = player.getPos();
 			for(int y = 0; y < this.ySize; y++) {
@@ -202,6 +204,7 @@ public class world {
 		
 	}
 	public void drawMapAround(player player){
+		//Draw map with radius visibility
 		if(!isMapGenerated()){return;}
 		Vector2D playerPos = player.getPos();
 		
@@ -252,5 +255,9 @@ public class world {
 
 	public void setExitPos(Vector2D exitPos) {
 		this.exitPos = exitPos;
+	}
+	public void addRadiusVisibility(int amount){
+		this.radiusVisibility += amount;
+		System.out.println("World visibility radius has increased by " + amount + ". Now you're able to see " + this.radiusVisibility + " slots around you!");
 	}
 }

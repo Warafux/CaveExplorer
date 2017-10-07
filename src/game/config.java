@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.AbstractMap.SimpleEntry;
 
 import items.bandages;
+import items.binoculars;
 import items.pickaxe;
 import slots.bomb;
 import slots.teleport;
@@ -42,6 +43,7 @@ public class config {
 			Arrays.asList(
 					new SimpleEntry<item, Integer>(new pickaxe(), 1),
 					new SimpleEntry<item, Integer>(new bandages(), 1),
+					new SimpleEntry<item, Integer>(new binoculars(), 1),
 					new SimpleEntry<item, Integer>(null, 39)
 					)
 			);

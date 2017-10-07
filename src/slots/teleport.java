@@ -1,14 +1,13 @@
 package slots;
 import java.util.ArrayList;
 
-import game.item;
 import game.player;
 import game.slot;
 import game.world;
 
 public class teleport extends slot{
 	private boolean isUsed = false;
-	private char isUsedIcon = 'X';
+	private char isUsedIcon = '.';
 	
 	public teleport() {
 		this.icon = '@';
