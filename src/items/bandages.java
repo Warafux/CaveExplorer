@@ -1,3 +1,7 @@
+package items;
+import game.item;
+import game.player;
+import game.world;
 
 public class bandages extends item{
 	private int healAmount = 30;

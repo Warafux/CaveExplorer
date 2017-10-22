@@ -1,6 +1,9 @@
+package game;
+import utilities.Vector2D;
+import utilities.scanner;
 
 public class player {
-	public String playerName = "";
+	private String playerName = "";
 	private int playerHealth;
 	private boolean isDead = false;
 	char icon = 'p';
@@ -16,8 +19,8 @@ public class player {
 	}
 	public void choosePlayerName() {
 		System.out.println("Choose your player name:");
-		this.playerName = scanner.requestString();
-		System.out.println("Your new player name is: " + this.playerName);
+		this.setPlayerName(scanner.requestString());
+		System.out.println("Your new player name is: " + this.getPlayerName());
 	}
 	public Vector2D getPos() {
 		return this.playerPos;
@@ -117,5 +120,11 @@ public class player {
 		for(item invItem : this.inventory.items){
 			System.out.println(invItem.getItemName() + " - " + invItem.usesLeft + " use" + (invItem.usesLeft == 1 ? "" : "s") + " left");
 		}
+	}
+	public String getPlayerName() {
+		return playerName;
+	}
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
 	}
 }

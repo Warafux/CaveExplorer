@@ -1,3 +1,9 @@
+import game.config;
+import game.player;
+import game.stats;
+import game.world;
+import utilities.Vector2D;
+import utilities.scanner;
 
 public class Game {
 	
@@ -20,12 +26,12 @@ public class Game {
 		System.out.println("GAME STARTED");
 		
 		//Put player on START position
-		player.setPos(world.spawnPos);
+		player.setPos(world.getSpawnPos());
 		
 		world.drawMapAround(player);
 
 		//check every move if player's pos equals to an exit slot
-		while(!world.getSlotInWorld(player.getPos()).getPos().equals(world.exitPos) && !player.isDead()) {
+		while(!world.getSlotInWorld(player.getPos()).getPos().equals(world.getExitPos()) && !player.isDead()) {
 			//Move the player, check if movement can be done
 			movePlayer(world, player, chooseNextAction(world, player), stats);
 
@@ -72,6 +78,11 @@ public class Game {
 				displayHelp(world, player);
 				chosenDirection = chooseNextAction(world, player);
 				break;
+			case 'r':
+			case 'R':
+				player.useInventoryItem(world, player, "binoculars");
+				chosenDirection = chooseNextAction(world, player);
+				break;
 			default:
 				chosenDirection = new Vector2D(0, 0);
 				break;
@@ -89,8 +100,8 @@ public class Game {
 		}
 	}
 	private static void displayHelp(world world, player player){
-		double angleBetwenPlayerAndExit = Vector2D.angle(player.getPos(), world.exitPos);
-		double distanceBetweenPlayerAndExit = Vector2D.distance(player.getPos(), world.exitPos);
+		double angleBetwenPlayerAndExit = Vector2D.angle(player.getPos(), world.getExitPos());
+		double distanceBetweenPlayerAndExit = Vector2D.distance(player.getPos(), world.getExitPos());
 		System.out.print("From your position, exit is located at: ");
 		if(angleBetwenPlayerAndExit > 0 && angleBetwenPlayerAndExit < 90){
 			System.out.print("top-left");

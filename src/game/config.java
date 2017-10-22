@@ -1,7 +1,16 @@
+package game;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.AbstractMap.SimpleEntry;
+
+import items.bandages;
+import items.binoculars;
+import items.pickaxe;
+import slots.bomb;
+import slots.teleport;
+import slots.floor;
+import slots.wall;
 
 public class config {
 	//Default player config
@@ -22,8 +31,9 @@ public class config {
 	//Available slots when filling world
 	List<SimpleEntry<slot, Integer>> availableSlots = new ArrayList<SimpleEntry<slot, Integer>>(
 		Arrays.asList(
-				new SimpleEntry<slot, Integer>(new wall(), 12),
-				new SimpleEntry<slot, Integer>(new floor(), 7),
+				new SimpleEntry<slot, Integer>(new wall(), 30),
+				new SimpleEntry<slot, Integer>(new floor(), 15),
+				new SimpleEntry<slot, Integer>(new teleport(), 2),
 				new SimpleEntry<slot, Integer>(new bomb(), 1)
 				)
 		);
@@ -33,6 +43,7 @@ public class config {
 			Arrays.asList(
 					new SimpleEntry<item, Integer>(new pickaxe(), 1),
 					new SimpleEntry<item, Integer>(new bandages(), 1),
+					new SimpleEntry<item, Integer>(new binoculars(), 1),
 					new SimpleEntry<item, Integer>(null, 39)
 					)
 			);

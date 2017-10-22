@@ -1,3 +1,8 @@
+package slots;
+import game.player;
+import game.slot;
+import game.world;
+import items.pickaxe;
 
 public class wall extends slot{
 	private boolean broken = false;

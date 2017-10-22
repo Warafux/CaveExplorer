@@ -1,4 +1,10 @@
+package utilities;
 import java.util.AbstractMap.SimpleEntry;
+
+import game.item;
+import game.slot;
+import slots.wall;
+
 import java.util.ArrayList;
 import java.util.List;
 //WEIGHTED RANDOM SHUFFLING ALGORITHM

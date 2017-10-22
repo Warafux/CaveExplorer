@@ -1,12 +1,19 @@
+package game;
+import slots.exit;
+import slots.floor;
+import slots.path;
+import slots.spawn;
+import utilities.Vector2D;
+import utilities.weightRandomAlgorithm;
 
 public class world {
 	config config;
 	slot[][] slots;
 	int xSize;
 	int ySize;
-	Vector2D spawnPos;
-	Vector2D exitPos;
-	int radiusVisibility;
+	private Vector2D spawnPos;
+	private Vector2D exitPos;
+	private int radiusVisibility;
 	public world(config config) {
 		this.config = config;
 		this.xSize = config.XSIZE;
@@ -27,10 +34,10 @@ public class world {
 	private boolean generateNewWorld() {
 		clearWorld();//clear world
 		//SET SPAWN
-		spawnPos = getRandomPos();
+		setSpawnPos(getRandomPos());
 		
-		setSlot(new spawn(), spawnPos);
-		Vector2D lastPos = spawnPos;
+		setSlot(new spawn(), getSpawnPos());
+		Vector2D lastPos = getSpawnPos();
 		
 		//CREATE PATH
 		//String path = "";
@@ -81,7 +88,7 @@ public class world {
 			possibleExitPos = lastPos.add(nextDirection);
 		}
 
-		exitPos = lastPos.add(nextDirection);
+		setExitPos(lastPos.add(nextDirection));
 
 		//Set the slot
 		setSlot(new path(), lastPos);
@@ -155,6 +162,9 @@ public class world {
 	private slot getRandomSlot() {
 		return weightRandomAlgorithm.chooseSlot(this.config.availableSlots);
 	}
+	public slot[][] getSlots(){
+		return this.slots;
+	}
 	private boolean isMapGenerated(){
 		for(int y = 0; y < this.ySize; y++) {	
 			for(int x = 0; x < this.xSize; x++) {	
@@ -167,6 +177,7 @@ public class world {
 		return true;
 	}
 	public void drawMap(){
+		//Draw only the map without even a radius
 		if(!isMapGenerated()){return;}
 			for(int y = 0; y < this.ySize; y++) {
 				for(int x = 0; x < this.xSize; x++) {	
@@ -176,6 +187,7 @@ public class world {
 		}
 	}
 	public void drawMap(player player){
+		//Draw map with player on it
 		if(!isMapGenerated()){return;}
 		Vector2D playerPos = player.getPos();
 			for(int y = 0; y < this.ySize; y++) {
@@ -192,6 +204,7 @@ public class world {
 		
 	}
 	public void drawMapAround(player player){
+		//Draw map with radius visibility
 		if(!isMapGenerated()){return;}
 		Vector2D playerPos = player.getPos();
 		
@@ -226,5 +239,25 @@ public class world {
 	private void setSlot(slot slot, Vector2D position) {
 		this.slots[position.getX()][position.getY()] = slot;
 		slot.setPos(position);
+	}
+
+	public Vector2D getSpawnPos() {
+		return spawnPos;
+	}
+
+	public void setSpawnPos(Vector2D spawnPos) {
+		this.spawnPos = spawnPos;
+	}
+
+	public Vector2D getExitPos() {
+		return exitPos;
+	}
+
+	public void setExitPos(Vector2D exitPos) {
+		this.exitPos = exitPos;
+	}
+	public void addRadiusVisibility(int amount){
+		this.radiusVisibility += amount;
+		System.out.println("World visibility radius has increased by " + amount + ". Now you're able to see " + this.radiusVisibility + " slots around you!");
 	}
 }
