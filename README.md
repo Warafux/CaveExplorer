@@ -6,16 +6,18 @@ You can move with W,A,S,D to find new things like items, teleportation tiles, bo
 ### Items
 Items can be seen by pressing I. Some items have uses left. If you consume them and uses left are 0 they will be removed from your inventory.
 There are some items that can be used via keyboard shortcut, these are:
+
 | Item | Shortcut | Description |
-| ------ | ------ |
+| --- | --- | --- |
 | Binoculars | R | They give you more vision of your surroundings |
 | Bandages | B | This item will restore 30hp on the player |
 | Pickaxe | NONE | This specific item will allow you to break through walls and get through them |
 
 ### Map
 Map will show your position and your surrounding. Everything has it's own character and this is the actual configuration:
+
 | Char | Name | Description | Link to file |
-| ------ | ------ |
+| --- | --- | --- | --- |
 | X | BOMB | If a player steps on it, this will be hurt by a random amount of damage. | [src/slots/bomb.java] [PlGh] |
 | # | WALL | A wall which the player can get through, breakable with a pickaxe. | [src/slots/wall.java] [PlGh] |
 | @ | TELEPORT | This will teleport a player to another teleport point of the map. | [src/slots/teleport.java] [PlGh] |
