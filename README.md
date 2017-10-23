@@ -18,13 +18,13 @@ Map will show your position and your surrounding. Everything has it's own charac
 
 | Char | Name | Description | Link to file |
 | --- | --- | --- | --- |
-| X | BOMB | If a player steps on it, this will be hurt by a random amount of damage. | [src/slots/bomb.java] [PlGh] |
-| # | WALL | A wall which the player can get through, breakable with a pickaxe. | [src/slots/wall.java] [PlGh] |
-| @ | TELEPORT | This will teleport a player to another teleport point of the map. | [src/slots/teleport.java] [PlGh] |
-| O | SPAWN | Where the player spawned by the first time, initial position. | [src/slots/spawn.java] [PlGh] |
-| NONE | PATH | This is not shown to the player, but it's used for the algorithm that builds the path. | [src/slots/path.java] [PlGh] |
-| NONE | FLOOR | Regular tile, which player can step. There's a chance that the floor helds an item. | [src/slots/floor.java] [PlGh] |
-| S | EXIT | Exit tile. | [src/slots/exit.java] [PlGh] |
+| X | BOMB | If a player steps on it, this will be hurt by a random amount of damage. | [bomb.java](src/slots/bomb.java) |
+| # | WALL | A wall which the player can get through, breakable with a pickaxe. | [wall.java](src/slots/wall.java) |
+| @ | TELEPORT | This will teleport a player to another teleport point of the map. | [teleport.java](src/slots/teleport.java) |
+| O | SPAWN | Where the player spawned by the first time, initial position. | [spawn.java](src/slots/spawn.java) |
+| NONE | PATH | This is not shown to the player, but it's used for the algorithm that builds the path. | [path.java](src/slots/path.java) |
+| NONE | FLOOR | Regular tile, which player can step. There's a chance that the floor helds an item. | [floor.java](src/slots/floor.java) |
+| S | EXIT | Exit tile. | [src/slots/exit.java](src/slots/exit.java) |
 
 ### Execution
 
