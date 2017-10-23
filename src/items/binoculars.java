@@ -13,5 +13,9 @@ public class binoculars extends item{
 	}
 	public void use(world world, player player){
 		world.addRadiusVisibility(this.visibilityExtraRange);
+		this.usesLeft--;
+		if(this.usesLeft == 0){
+			player.deleteItemFromInventory((item) this);
+		}
 	}
 }
